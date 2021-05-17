@@ -1,0 +1,17 @@
+$mod hello
+$mod hello
+$mod hello
+$mod hello
+$mod hello
+$mod hello
+$mod new method
+new method
+new method again
+$mod new method again
+new method again
+$mod new method again
+$mod new method again
+new method again
+new method again
+$mod new method again?
+new method again?
