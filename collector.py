@@ -28,10 +28,14 @@ async def print_list(ctx, *args):
         await ctx.send('Mods list cleared')
         os.remove('mods.txt')
 
+@bot.command(name='restart')
+async def restart_bot(ctx):
+    await ctx.bot.logout()
+    await bot.login(TOKEN, bot=True)
+
 @bot.command(name='stop')
 async def stop_bot(ctx):
     await ctx.bot.logout()
-    await login(TOKEN, bot=True)
 
 
 bot.run(TOKEN)
