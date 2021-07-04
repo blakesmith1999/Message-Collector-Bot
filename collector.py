@@ -14,19 +14,31 @@ bot = commands.Bot(command_prefix='$')
 async def add_mod(ctx, *args):
     await ctx.send('Saved to suggestion list!')
     file = open('mods.txt', 'a')
-    #msg = args[5:]
-    file.write(args)
+    #arg = args[5:]
+    msg = ''.join(args)
+    file.write(msg + '\n')
     file.close
     
 @bot.command(name='list')
-async def print_list(ctx, *args):
-    if len(args) == 0:
+async def print_list(ctx):
+    file = open('mods.txt')
+
+    if os.stat('mods.txt').st_size == 0:
+        await ctx.send('The list is empty.')
+
+    else:
         await ctx.send('Listing mods')
-        file = open('mods.txt')
-        await ctx.send(file.read())
-    if args == 'clear':
+        for x in file:
+            await ctx.send(x)
+    file.close()
+
+async def clear_list(ctx, arg:str):
+    if 'clear' in arg:
         await ctx.send('Mods list cleared')
-        os.remove('mods.txt')
+        file = open('mods.txt', "w")
+        file.write("")
+        file.close()
+
 
 @bot.command(name='restart')
 async def restart_bot(ctx):
